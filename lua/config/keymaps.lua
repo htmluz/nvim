@@ -17,7 +17,7 @@ vim.opt.signcolumn = "auto"
 vim.opt.expandtab = false
 vim.opt.smartindent = true
 vim.opt.showcmd = true
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 0
 vim.opt.showmode = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
@@ -28,26 +28,23 @@ vim.opt.splitright = true
 vim.opt.termguicolors = true
 
 --statusline
-vim.cmd "highlight StatusType guibg=#919191 guifg=#1d2021"
-vim.cmd "highlight StatusFile guibg=#e0da92 guifg=#1d2021"
-vim.cmd "highlight StatusModified guibg=#e0da92 guifg=#1d2021"
-vim.cmd "highlight StatusBuffer guibg=#e0da92 guifg=#1d2021"
-vim.cmd "highlight StatusLocation guibg=#919191 guifg=#1d2021"
-vim.cmd "highlight StatusPercent guibg=#1d2021 guifg=#ebdbb2"
+vim.cmd "highlight StatusType guibg=black guifg=#f2f4f8"
+vim.cmd "highlight StatusFile guibg=black guifg=#f2f4f8"
+vim.cmd "highlight StatusModified guibg=black guifg=#f2f4f8"
+vim.cmd "highlight StatusBuffer guibg=black guifg=#f2f4f8"
+vim.cmd "highlight StatusLocation guibg=black guifg=#f2f4f8"
 vim.cmd "highlight StatusNorm guibg=none guifg=white"
 vim.o.statusline = " "
-				.. "%#StatusType#"
-				.. " %y " 
 				.. "%#StatusFile#"
-				.. " %F"
-				.. "%#StatusModified#"
-				.. "%m"
+				.. "%F "
 				.. "%#StatusNorm#"
 				.. "%="
-				.. "%#StatusBuffer#"
-				.. " %n "
 				.. "%#StatusLocation#"
 				.. " %l,%c "
+				.. "%#StatusModified#"
+				.. "%M"
+				.. "%#StatusBuffer#"
+				.. " %n "
 
 				
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "open file tree" })
@@ -84,4 +81,3 @@ vim.keymap.set("v", "<leader>r", "\"hy:%s/<C-r>h//g<left><left>", { desc = "repl
 vim.keymap.set("v", "<C-s>", ":sort<CR>", { desc = "sorts highlighted text in vmode" })	
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "moves line down"})
 vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv", { desc = "moves line up"})
-
