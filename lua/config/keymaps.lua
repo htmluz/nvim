@@ -12,7 +12,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.fileencoding = "utf-8"
 vim.opt.pumheight = 10
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 vim.opt.signcolumn = "auto"
 vim.opt.expandtab = false
 vim.opt.smartindent = true
@@ -25,26 +25,29 @@ vim.opt.clipboard = unnamedplus
 vim.opt.completeopt= { "menuone", "noselect" }
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.termguicolors = true
+vim.opt.termguicolors = true                                            
+vim.wo.signcolumn = "no"
+vim.opt.switchbuf	= "usetab,uselast"
+vim.opt.colorcolumn = "132"
 
 --statusline
 vim.cmd "highlight StatusType guibg=none guifg=#f2f4f8"
-vim.cmd "highlight StatusFile guibg=#C3B1E1 guifg=#333333"
+vim.cmd "highlight StatusFile guibg=#333333 guifg=#f2f4f8"
 vim.cmd "highlight StatusModified guibg=#ff6961 guifg=#f2f4f8"
-vim.cmd "highlight StatusBuffer guibg=#c3b1e1 guifg=#333333"
-vim.cmd "highlight StatusLocation guibg=#C3B1E1 guifg=#333333"
+vim.cmd "highlight StatusBuffer guibg=#333333 guifg=#f2f4f8"
+vim.cmd "highlight StatusLocation guibg=#333333 guifg=#f2f4f8"
 vim.cmd "highlight StatusNorm guibg=none guifg=white"
-vim.o.statusline = " "
+vim.o.statusline = ""
+				.. "%#StatusFile#"
+				.. "%F 🌹"
 				.. "%#StatusNorm#"
 				.. "%="
 				.. "%#StatusModified#"
 				.. "%M"
-				.. "%#StatusFile#"
-				.. "%F"
 				.. "%#StatusLocation#"
 				.. " %l,%c"
 				.. "%#StatusBuffer#"
-				.. " %n"
+				.. " 🥀 %n"
 
 
 				
