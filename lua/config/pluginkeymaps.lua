@@ -44,3 +44,48 @@ require('mason-lspconfig').setup({
     lsp_zero.default_setup,
   },
 })
+require('lspconfig').tailwindcss.setup {
+	capabilities = Capabilities,
+	filetypes = {
+		"css",
+    "scss",
+    "sass",
+    "postcss",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "rust",
+	},
+	init_options = {
+		userLanguages = {
+			rust = "html",
+		},
+	}
+}
+
+require('autoclose').setup({
+	   keys = {
+      ["("] = { escape = false, close = true, pair = "()" },
+      ["["] = { escape = false, close = true, pair = "[]" },
+      ["{"] = { escape = false, close = true, pair = "{}" },
+
+      [">"] = { escape = true, close = false, pair = "<>" },
+      [")"] = { escape = true, close = false, pair = "()" },
+      ["]"] = { escape = true, close = false, pair = "[]" },
+      ["}"] = { escape = true, close = false, pair = "{}" },
+
+      ['"'] = { escape = true, close = true, pair = '""' },
+      ["'"] = { escape = true, close = true, pair = "''" },
+      ["`"] = { escape = true, close = true, pair = "``" },
+   },
+   options = {
+      disabled_filetypes = { "text" },
+      disable_when_touch = false,
+      pair_spaces = true,
+      auto_indent = true,
+      disable_command_mode = false,
+   },
+})
+

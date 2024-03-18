@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.g.netrw_banner = 1
+vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 0
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -28,23 +28,24 @@ vim.opt.splitright = true
 vim.opt.termguicolors = true
 
 --statusline
-vim.cmd "highlight StatusType guibg=black guifg=#f2f4f8"
-vim.cmd "highlight StatusFile guibg=black guifg=#f2f4f8"
-vim.cmd "highlight StatusModified guibg=black guifg=#f2f4f8"
-vim.cmd "highlight StatusBuffer guibg=black guifg=#f2f4f8"
-vim.cmd "highlight StatusLocation guibg=black guifg=#f2f4f8"
+vim.cmd "highlight StatusType guibg=none guifg=#f2f4f8"
+vim.cmd "highlight StatusFile guibg=#C3B1E1 guifg=#333333"
+vim.cmd "highlight StatusModified guibg=#ff6961 guifg=#f2f4f8"
+vim.cmd "highlight StatusBuffer guibg=#c3b1e1 guifg=#333333"
+vim.cmd "highlight StatusLocation guibg=#C3B1E1 guifg=#333333"
 vim.cmd "highlight StatusNorm guibg=none guifg=white"
 vim.o.statusline = " "
-				.. "%#StatusFile#"
-				.. "%F "
 				.. "%#StatusNorm#"
 				.. "%="
-				.. "%#StatusLocation#"
-				.. " %l,%c "
 				.. "%#StatusModified#"
 				.. "%M"
+				.. "%#StatusFile#"
+				.. "%F"
+				.. "%#StatusLocation#"
+				.. " %l,%c"
 				.. "%#StatusBuffer#"
-				.. " %n "
+				.. " %n"
+
 
 				
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "open file tree" })
@@ -66,18 +67,16 @@ vim.keymap.set("n", "<C-Left>", ":vertical resize +3<CR>")
 vim.keymap.set("n", "<C-Right>", ":vertical resize -3<CR>")
 
 --Buffers
-vim.keymap.set("n", "<Tab>", vim.cmd.bnext)
-vim.keymap.set("n", "<S-Tab>", vim.cmd.bprevious)
-vim.keymap.set("n", "<leader>d", vim.cmd.bd, { desc = "delete buffer" })
-
---Autoclosing brackets
-vim.keymap.set("i", "'", "''<left>")
-vim.keymap.set("i", "\"", "\"\"<left>")
-vim.keymap.set("i", "(", "()<left>")
-vim.keymap.set("i", "[", "[]<left>")
-vim.keymap.set("i", "{", "{}<left>")
+vim.keymap.set("n", "<Tab>", vim.cmd.bnext, { desc = "next buffer" })
+vim.keymap.set("n", "<S-Tab>", vim.cmd.bprevious, { desc = "prev buffer" })
+vim.keymap.set("n", "<leader>d", ":bd!<CR>", { desc = "delete buffer" })
 
 vim.keymap.set("v", "<leader>r", "\"hy:%s/<C-r>h//g<left><left>", { desc = "replaces all highlighted words" })
 vim.keymap.set("v", "<C-s>", ":sort<CR>", { desc = "sorts highlighted text in vmode" })	
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "moves line down"})
 vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv", { desc = "moves line up"})
+
+vim.keymap.set("n", "<C-d", "<C-d>zz", { desc = "better scrolling" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "better scrolling"})
+vim.keymap.set("n", "<C-a>", ":lua vim.lsp.buf.code_action()<CR>", { desc = "code action" })
+vim.keymap.set("n", "<C-s>", ":lua vim.lsp.buf.definition()<CR>", { desc = "go-to definition" })
