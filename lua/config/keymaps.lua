@@ -16,7 +16,7 @@ vim.opt.laststatus = 3
 vim.opt.signcolumn = "auto"
 vim.opt.expandtab = false
 vim.opt.smartindent = true
-vim.opt.showcmd = true
+vim.opt.showcmd = false
 vim.opt.cmdheight = 0
 vim.opt.showmode = true
 vim.opt.scrolloff = 8
@@ -33,21 +33,22 @@ vim.opt.colorcolumn = "132"
 --statusline
 vim.cmd "highlight StatusType guibg=none guifg=#f2f4f8"
 vim.cmd "highlight StatusFile guibg=#333333 guifg=#f2f4f8"
-vim.cmd "highlight StatusModified guibg=#ff6961 guifg=#f2f4f8"
+vim.cmd "highlight StatusModified guibg=#333333 guifg=#f2f4f8"
 vim.cmd "highlight StatusBuffer guibg=#333333 guifg=#f2f4f8"
 vim.cmd "highlight StatusLocation guibg=#333333 guifg=#f2f4f8"
 vim.cmd "highlight StatusNorm guibg=none guifg=white"
 vim.o.statusline = ""
 				.. "%#StatusFile#"
-				.. "%F 🌹"
+				.. "%F "
+				.. "%#StatusModified#"
+				.. "%m"
 				.. "%#StatusNorm#"
 				.. "%="
-				.. "%#StatusModified#"
-				.. "%M"
-				.. "%#StatusLocation#"
-				.. " %l,%c"
+				.. "%a"
+--				.. "%#StatusLocation#"
+--				.. " %l,%c"
 				.. "%#StatusBuffer#"
-				.. " 🥀 %n"
+				.. "🥀 %n"
 
 
 				
@@ -62,10 +63,10 @@ vim.keymap.set("n", "<leader>l", vim.cmd.tabnext, { desc = "next tab" })
 --Split
 vim.keymap.set("n", "<leader>v", vim.cmd.vsplit, { desc = "new vertical split" })
 vim.keymap.set("n", "<leader>s", vim.cmd.split, { desc = "new horizontal split" })
-vim.keymap.set("n", "<C-h>", "<C-w>h")
-vim.keymap.set("n", "<C-l>", "<C-w>l")
-vim.keymap.set("n", "<C-j>", "<C-w>j")
-vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "better split navigation" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "better split navigation" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "better split navigation" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "better split navigation" })
 vim.keymap.set("n", "<C-Left>", ":vertical resize +3<CR>")
 vim.keymap.set("n", "<C-Right>", ":vertical resize -3<CR>")
 
@@ -83,3 +84,6 @@ vim.keymap.set("n", "<C-d", "<C-d>zz", { desc = "better scrolling" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "better scrolling"})
 vim.keymap.set("n", "<C-a>", ":lua vim.lsp.buf.code_action()<CR>", { desc = "code action" })
 vim.keymap.set("n", "<C-s>", ":lua vim.lsp.buf.definition()<CR>", { desc = "go-to definition" })
+
+vim.keymap.set("n", "<leader>L", ":Lazy<CR>", { desc = "open Lazy" })
+vim.keymap.set("n", "<leader>m", ":Mason<CR>", { desc = "open Mason" })
