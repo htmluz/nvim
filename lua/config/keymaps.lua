@@ -40,15 +40,15 @@ vim.cmd "highlight StatusNorm guibg=none guifg=white"
 vim.o.statusline = ""
 				.. "%#StatusFile#"
 				.. "%F "
+				.. "%#StatusBuffer#"
+				.. "%a"
+				.. "🥀%n"
 				.. "%#StatusModified#"
-				.. "%m"
+				.. " %m"
 				.. "%#StatusNorm#"
 				.. "%="
-				.. "%a"
 --				.. "%#StatusLocation#"
 --				.. " %l,%c"
-				.. "%#StatusBuffer#"
-				.. "🥀 %n"
 
 
 				
@@ -63,10 +63,6 @@ vim.keymap.set("n", "<leader>l", vim.cmd.tabnext, { desc = "next tab" })
 --Split
 vim.keymap.set("n", "<leader>v", vim.cmd.vsplit, { desc = "new vertical split" })
 vim.keymap.set("n", "<leader>s", vim.cmd.split, { desc = "new horizontal split" })
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "better split navigation" })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "better split navigation" })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "better split navigation" })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "better split navigation" })
 vim.keymap.set("n", "<C-Left>", ":vertical resize +3<CR>")
 vim.keymap.set("n", "<C-Right>", ":vertical resize -3<CR>")
 
