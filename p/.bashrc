@@ -24,11 +24,12 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
+source ~/.git-prompt.sh
+
 alias vim='nvim .'
 
 export PATH=$PATH:/usr/local/go/bin
 
-
 . "$HOME/.cargo/env"
 
-PS1="\w\n\e[1;35m\$ \e[0m"
+PS1='\w$(__git_ps1 " git:%s")\n\e[1;35m\$ \e[0m'
