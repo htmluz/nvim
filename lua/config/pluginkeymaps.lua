@@ -1,9 +1,9 @@
-vim.cmd('colorscheme carbonfox')
+vim.cmd('colorscheme rose-pine')
 
 --Telescope
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>pf", builtin.find_files, { desc = "file search" })
-vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "git file search" })
+vim.keymap.set("n", "<leader>pp", builtin.git_files, { desc = "git file search" })
 vim.keymap.set("n", "<leader>ps", function()
   builtin.grep_string({ search = vim.fn.input("Grep ") })
 end, { desc = "grep in directory"})
@@ -26,6 +26,15 @@ vim.keymap.set("n", "<C-4>", function()
   ui.nav_file(4)
 end, { desc = "harpoon hotkeys" })
 
+
+--Highlight on yank
+vim.cmd[[
+augroup highlight_yank
+autocmd!
+au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
+augroup END
+]]
+
 --Undotree
 vim.keymap.set("n", "<leader>U", vim.cmd.UndotreeToggle, { desc = "Undotree" })
 
@@ -39,30 +48,19 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "goto next diagnost
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'tsserver', 'rust_analyzer'},
+  ensure_installed = {'pyright'},
   handlers = {
     lsp_zero.default_setup,
   },
 })
-require('lspconfig').tailwindcss.setup {
-	capabilities = Capabilities,
-	filetypes = {
-		"css",
-    "scss",
-    "sass",
-    "postcss",
-    "html",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "rust",
-	},
-	init_options = {
-		userLanguages = {
-			rust = "html",
+require('lspconfig').pyright.setup {
+	settings = {
+		python = {
+			analysis = {
+				typeCheckingMode = "standard",
+			},
 		},
-	}
+	},
 }
 
 require('autoclose').setup({
